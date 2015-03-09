@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>hello world</title>
+	<script src="js/libs/require.js"></script>
+	<script type="text/javascript">
+requirejs.config({
+    baseUrl: 'js',
+    paths: {
+        jquery: './libs/jquery-1.11.2.min',
+        underscore: './libs/underscore-min',
+        backbone:"./libs/backbone-min"
+    },
+     shim: {
+         'backbone': ['underscore', 'jquery']
+     }
+});
+
+// 加载home所需js 跳转
+requirejs(['jquery', 'backbone'],
+function   ($, _) {
+  	location.href = "./home.html";
+});
+	</script>
+</head>
+<body>
+	<img src="./images/loading.gif">
+</body>
+</html>

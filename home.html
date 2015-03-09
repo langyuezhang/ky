@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>hello world</title>
+	    <style>
+	    html,body{
+	    	height: 100%;
+	    }
+        body
+        {
+        	border: 1px solid #000000;
+        	margin: 0px 0px;
+        	
+        }
+    </style>
+    <script type="text/javascript">
+var gui = require('nw.gui');
+var somePackage = require('sqlite3');
+
+
+
+
+ var win = gui.Window.get();
+
+  function takeSnapshot() {
+win.capturePage(function (img) {
+
+                var base64data = img.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+
+                require("fs").writeFile("cap.png", base64data, 'BASE64', function (err) {
+
+                    console.log(err);
+
+                });
+
+            }, 'PNG');
+        }
+
+    </script>
+</head>
+<body>
+	<div class="home-header">
+		<img src="logo.png">
+		<div class="header-msg"></div>
+		<input type="button" value="X" onclick="win.close();"/>
+		<button onclick="takeSnapshot()">截图</button>
+	</div>
+	<div class="home-main">
+		main<script>document.write(process.version)</script>.
+	</div>
+</body>
+</html>
